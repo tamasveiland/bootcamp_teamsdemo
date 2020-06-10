@@ -237,9 +237,17 @@ task('static:inject', injectSources);
 task('styles', styles);
 
 /**
+ * Copy node_modules to dist folder
+ */
+task('copy-node-modules', function () {
+    return src('./node_modules/**/*.*')
+        .pipe(dest('./dist/node_modules'));
+});
+
+/**
  * Build task, that uses webpack and injects scripts into pages
  */
-task('build', series('webpack', 'styles', 'static:copy', 'static:inject'));
+task('build', series('webpack', 'styles', 'static:copy', 'static:inject', 'copy-node-modules'));
 
 /**
  * Replace parameters in the manifest
