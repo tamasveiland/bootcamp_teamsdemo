@@ -8,5 +8,5 @@ if [ -z "$app" ]; then
 else
   # update app
   appId=$(echo $app | jq '.id')
-  o365 teams app update -i $appId -p "./package/second-demo-app.zip"
+  o365 teams app update -i $appId -p "./package/01-teams-app.zip"
 fi
