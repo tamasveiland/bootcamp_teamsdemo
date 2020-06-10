@@ -13,7 +13,7 @@ env:
   APPLICATION_ID: 'c390e840-ab18-11ea-a32b-9bb004570882'
   PACKAGE_NAME: 'myteamsapp'
   VERSION: '0.0.1'
-  HOSTNAME: 'myteamsapp.azurewebsites.net'
+  HOSTNAME: 'bootcampdemohu.azurewebsites.net'
 
 jobs:
   build:
