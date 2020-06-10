@@ -73,3 +73,32 @@ jobs:
         uses: TonyBogdanov/zip@1.0
         with:
           args: unzip -qq ./package/dist.zip -d ./dist
+      - name: Office 365 CLI Login
+        uses: pnp/action-cli-login@v1.0.0
+        with:
+          # Username (email address) of the admin
+          ADMIN_USERNAME: ${{ secrets.adminUsername }}
+          # Password of the admin
+          ADMIN_PASSWORD: ${{ secrets.adminPassword }}
+      - name: Office 365 CLI Run Script
+        uses: pnp/action-cli-runscript@v1.0.0
+        with:
+          # Relative path of the script in your repo.
+          O365_CLI_SCRIPT_PATH: './scripts/upload_manifest.sh' # optional
+          # Office 365 CLI Script
+          # O365_CLI_SCRIPT: # optional
+          # Used only with O365_CLI_SCRIPT. If true the assumption is the script passed in O365_CLI_SCRIPT will be a PowerShell script, otherwise the assumption is bash script. Default is false
+          IS_POWERSHELL: false # optional
+      - name: Azure WebApp
+        uses: Azure/webapps-deploy@v2
+        with:
+          # Name of the Azure Web App
+          app-name: 'bcdemo02bbb'
+          # Applies to Web App only: Publish profile (*.publishsettings) file contents with Web Deploy secrets
+          publish-profile: ${{ secrets.PUBLISH_PROFILE }} # optional
+          # Enter an existing Slot other than the Production slot
+          #slot-name: # optional, default is production
+          # Applies to Web App only: Path to package or folder. *.zip, *.war, *.jar or a folder to deploy
+          package: './dist' # optional, default is .
+          # Enter the start up command. For ex. dotnet run or dotnet run
+          #startup-command: # optional
