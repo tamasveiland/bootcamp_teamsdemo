@@ -93,7 +93,7 @@ jobs:
         uses: Azure/webapps-deploy@v2
         with:
           # Name of the Azure Web App
-          app-name: 'bcdemo02bbb'
+          app-name: 'bootcampdemohu'
           # Applies to Web App only: Publish profile (*.publishsettings) file contents with Web Deploy secrets
           publish-profile: ${{ secrets.PUBLISH_PROFILE }} # optional
           # Enter an existing Slot other than the Production slot
