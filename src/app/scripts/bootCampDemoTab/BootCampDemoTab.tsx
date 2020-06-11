@@ -52,7 +52,7 @@ export class BootCampDemoTab extends TeamsBaseComponent<IBootCampDemoTabProps, I
                     padding: ".8rem 0 .8rem .5rem"
                 }}>
                     <Flex.Item>
-                        <Header content="This is your tab - delivered by GitHub" />
+                        <Header content="This is your tab - delivered by GitHub!" />
                     </Flex.Item>
                     <Flex.Item>
                         <div>
